@@ -86,7 +86,7 @@
     找到路径
     C:\Users\这里是你的电脑名称\AppData\Roaming\npm\node_modules\electron-prebuilt\dist\
     ```
-  * 五、大功告成
+* 五、大功告成
      * ![成功抵达](img/2.png)
 * 尾声
    * 其中 `dist` 可复制到其他地方运行 `electron.exe` 重命名、可更换图标 
