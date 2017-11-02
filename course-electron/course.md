@@ -11,7 +11,11 @@
     1. ) package.json
     2. ) index.html
     3. ) main.js
+<<<<<<< HEAD
     * 图示 ![项目结构图示](./img/1.PNG)
+=======
+       * ![项目结构图示](./img/1.PNG)
+>>>>>>> 9ba33bda9a53a6c604a86cc3ed538b1cd7cb158d
 * 文件基本内容
     1. ) package.json 内容、关注点在 `main` 该配置文件为引导文件
     ```
@@ -86,7 +90,12 @@
     找到路径
     C:\Users\这里是你的电脑名称\AppData\Roaming\npm\node_modules\electron-prebuilt\dist\
     ```
+<<<<<<< HEAD
   * 五、大功告成
     * ![成功抵达](./img/2.PNG)
+=======
+* 五、大功告成
+     * ![成功抵达](./img/2.PNG)
+>>>>>>> 9ba33bda9a53a6c604a86cc3ed538b1cd7cb158d
 * 尾声
    * 其中 `dist` 可复制到其他地方运行 `electron.exe` 重命名、可更换图标
