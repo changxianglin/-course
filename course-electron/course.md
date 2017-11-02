@@ -11,7 +11,7 @@
     1. ) package.json
     2. ) index.html
     3. ) main.js
-    * 图示 ![项目结构图示](img/1.png)
+    * 图示 ![项目结构图示](./img/1.PNG)
 * 文件基本内容
     1. ) package.json 内容、关注点在 `main` 该配置文件为引导文件
     ```
@@ -87,6 +87,6 @@
     C:\Users\这里是你的电脑名称\AppData\Roaming\npm\node_modules\electron-prebuilt\dist\
     ```
   * 五、大功告成
-    * ![成功抵达](img/2.png)
+    * ![成功抵达](./img/2.PNG)
 * 尾声
-   * 其中 `dist` 可复制到其他地方运行 `electron.exe` 重命名、可更换图标 
+   * 其中 `dist` 可复制到其他地方运行 `electron.exe` 重命名、可更换图标
