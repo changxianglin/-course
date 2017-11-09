@@ -43,3 +43,61 @@ var __main = function() {
 }
 
 __main()
+
+
+
+// 工具函数
+class zhangsan {
+  constructor() {
+
+  }
+
+  log() {
+    console.log.apply(console, arguments)
+  }
+
+  e(selector) {
+    return document.querySelector(selector)
+  }
+
+  es(selector) {
+    return document.querySelectorAll(selector)
+  }
+
+  appendHtml(elements, html) {
+    elements.insertAdjacentHTML('beforeEnd', html)
+  }
+
+  bindEvent(element, eventName, callback) {
+    element.addEventListener(eventName, callback)
+  }
+
+  toggleClass(element, className) {
+    if (element.classList.contains(className)) {
+      element.classList.remove(className)
+    } else {
+      element.classList.add(className)
+    }
+  }
+
+  removeClassAll(className) {
+    var selector = '.' + className
+    var elements = document.querySelectorAll(selector)
+    for (var i = 0; i < elements.length; i++) {
+      var e = elements[i]
+      e.classList.remove(className)
+    }
+  }
+
+  bindAll(selector, eventName, callback) {
+    var elements = document.querySelectorAll(selector)
+    for (var i = 0; i < elements.length; i++) {
+      var e = elements[i]
+      bindEvent(e, eventName, callback)
+    }
+  }
+
+  findAll(element, selector) {
+    return element.querySelectorAll(selector)
+  }
+}
