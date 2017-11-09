@@ -8,4 +8,4 @@
 
 
 *  可参照
-http: //reactnative.cn/docs/0.50/getting-started.html
+        [http: //reactnative.cn/docs/0.50/getting-started.html]()
