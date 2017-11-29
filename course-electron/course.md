@@ -34,37 +34,53 @@
     2. ) index.html 内容安装 html 格式来写即可(具体不再展示)
     3. ) main.js 内容是核心
     ```
-      const app = require("app")
-      const BrowserWindow = require("browser-window")
+// 载入electron模块
+const electron=require("electron");
+// 创建应用程序对象
+const app=electron.app;
+// 创建一个浏览器窗口，主要用来加载HTML页面
+const BrowserWindow=electron.BrowserWindow;
 
-      const mainWindow = null
+// 声明一个BrowserWindow对象实例
+let mainWindow;
 
-      app.on("window-all-closed", function() {
-        if (process.platform != "darwin") {
-          app.quit()
-        }
-      })
+// 定义一个创建浏览器窗口的方法
+function createWindow(){
+    // 创建一个浏览器窗口对象，并指定窗口的大小
+    mainWindow=new BrowserWindow({
+        width:800,
+        height:600
+    });
 
-      // 当 Electron 完成了初始化并且准备创建浏览器窗口的时候
-      // 这个方法就被调用
-      app.on('ready', function() {
-        // 创建浏览器窗口。
-        mainWindow = new BrowserWindow({width: 800, height: 600});
+    // 通过浏览器窗口对象加载index.html文件，同时也是可以加载一个互联网地址的
+    mainWindow.loadURL('file://'+__dirname+'/index.html');
+    // 同时也可以简化成：mainWindow.loadURL('./index.html');
 
-        // 加载应用的 index.html
-        mainWindow.loadURL('file://' + __dirname + '/index.html');
+    // 监听浏览器窗口对象是否关闭，关闭之后直接将mainWindow指向空引用，也就是回收对象内存空间
+    mainWindow.on("closed",function(){
+        mainWindow = null;
+    });
+}
 
-        // 打开开发工具
-        mainWindow.openDevTools();
+// 监听应用程序对象是否初始化完成，初始化完成之后即可创建浏览器窗口
+app.on("ready",createWindow);
 
-        // 当 window 被关闭，这个事件会被发出
-        mainWindow.on('closed', function() {
-          // 取消引用 window 对象，如果你的应用支持多窗口的话，
-          // 通常会把多个 window 对象存放在一个数组里面，
-          // 但这次不是。
-          mainWindow = null;
-        });
-      });
+// 监听应用程序对象中的所有浏览器窗口对象是否全部被关闭，如果全部被关闭，则退出整个应用程序。该
+app.on("window-all-closed",function(){
+    // 判断当前操作系统是否是window系统，因为这个事件只作用在window系统中
+    if(process.platform!="darwin"){
+        // 退出整个应用程序
+        app.quit();
+    }
+});
+
+// 监听应用程序图标被通过点或者没有任何浏览器窗口显示在桌面上，那我们应该重新创建并打开浏览器窗口，避免Mac OS X系统回收或者销毁浏览器窗口
+app.on("activate",function(){
+    if(mainWindow===null){
+        createWindow();
+    }
+});
+
     ```
 * 三、打包
   1. ) 安装打包工具
@@ -99,3 +115,8 @@
 >>>>>>> 9ba33bda9a53a6c604a86cc3ed538b1cd7cb158d
 * 尾声
    * 其中 `dist` 可复制到其他地方运行 `electron.exe` 重命名、可更换图标
+   
+   ---
+ #### 参考教程
+ * https://www.kancloud.cn/winu/electron/154345
+ * https://electronjs.org/
